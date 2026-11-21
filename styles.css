@@ -1,0 +1,316 @@
+:root {
+    --bg-body: oklch(53.723% 0.25467 265.894);
+    --bg-overlay: rgba(0, 0, 0, .25);
+    --clr-font-primary: oklch(100% 0.00011 271.152);
+    --clr-font-secondary: oklch(85.799% 0.0699 273.252);
+    --main-border-style: 1px solid oklch(63.755% 0.19405 262.464);
+    --outline-focus-style: 2px solid oklch(100% 0.00011 271.152);
+    --outline-focus-offset: 4px;
+    --font-family: "Inter", sans-serif;
+    --animation-speed: .25s;
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+:is(a, button):focus-visible {
+    outline: var(--outline-focus-style);
+    outline-offset: var(--outline-focus-offset);
+}
+
+button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+ul {
+    list-style: none;
+}
+
+body {
+    background: var(--bg-body);
+    color: var(--clr-font-primary);
+    font-family: var(--font-family);
+    display: grid;
+    grid-template-columns: minmax(auto, 100rem);
+    justify-content: center;
+}
+
+.wrapper {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.main-header {
+    padding: 1.5rem 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1;
+}
+
+.main-header__nav {
+    width: 24.75rem;
+    height: calc(100% - 4.5625rem);
+    background: var(--bg-body);
+    padding: 3rem;
+    position: absolute;
+    right: 0;
+    top: 4.5625rem;
+    z-index: 1;
+    visibility: hidden;
+    transform: translateX(110%);
+    transition: visibility var(--animation-speed), transform var(--animation-speed);
+}
+
+.main-header__nav ul {
+    font-size: 2rem;
+    line-height: 1.6;
+    letter-spacing: -.125rem;
+    text-transform: capitalize;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.main-header__nav li {
+    overflow: hidden;
+}
+
+.main-header__nav a {
+    display: inline;
+    overflow: hidden;
+    position: relative;
+}
+
+.main-header__nav a::before {
+    content: '';
+    width: 100%;
+    height: .125rem;
+    background: oklch(100% 0.00011 271.152);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: translateX(-110%);
+    transition: transform var(--animation-speed);
+}
+
+.main-header__nav a:is(:hover, :focus-visible)::before {
+    transform: translateX(0);
+}
+
+.main-header__logo {
+    font-size: .875rem;
+    font-weight: 500;
+    line-height: 1.42;
+}
+
+.main-header__hamburger {
+    width: 1.5rem;
+    aspect-ratio: 1;
+    display: grid;
+    place-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.main-header__hamburger svg {
+    position: absolute;
+    transition: transform var(--animation-speed);
+}
+
+.main-header__hamburger[aria-expanded=true] .icon__hamburger {
+    transform: translateY(-110%);
+}
+
+.main-header__hamburger[aria-expanded=false] .icon__close {
+    transform: translateY(110%);
+}
+
+.main-header__hamburger[aria-expanded=true] .icon__close {
+    transform: translateY(0);
+}
+
+.main-header__hamburger[aria-expanded=true] + .main-header__nav {
+    transform: translateX(0);
+    visibility: visible;
+}
+
+.hero {
+    border: var(--main-border-style);
+    display: grid;
+    grid-template-columns: 40.5rem auto;
+}
+
+.hero header {
+    width: 30rem;
+    padding: 3rem;
+    align-self: center;
+}
+
+.hero header h1 {
+    font-size: 3.75rem;
+    font-weight: 500;
+    line-height: 1.06;
+    letter-spacing: -.125rem;
+}
+
+.hero header p {
+    margin-top: 2.5rem;
+    color: var(--clr-font-secondary);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.stat {
+    padding: 2rem;
+    height: 20.5rem;
+    border: var(--main-border-style);
+    border-right: none;
+    border-top: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.stat:nth-child(3),
+.stat:nth-child(4) {
+    border-bottom: none;
+}
+
+.stat__header {
+    font-size: 2.25rem;
+    font-weight: 500;
+    line-height: 1.11;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.stat__details {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat__details-title {
+    font-size: 1.0625rem;
+    font-weight: 500;
+    line-height: 1.65;
+}
+
+.stat__details-info {
+    color: var(--clr-font-secondary);
+    font-size: .875rem;
+    line-height: 1.42;
+}
+
+footer {
+    padding: 1.5rem 3rem;
+    font-size: .875rem;
+    font-weight: 500;
+    line-height: 1.42;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.overlay {
+    background: var(--bg-overlay);
+    width: 100%;
+    position: absolute;
+    top: 4.5625rem;
+    bottom: 0;
+    left: 0;
+    transform: translateX(-110%);
+    transition: transform var(--animation-speed)
+}
+
+.overlay.visible {
+    transform: translateX(0);
+}
+
+@media (max-width: 71.25rem) {
+    .hero {
+        grid-template-columns: 1fr;
+        grid-template-rows: 33.5rem;
+    }
+
+    .stats {
+        border-top: var(--main-border-style);
+    }
+}
+
+@media (max-width: 31.25rem) {
+    .main-header__nav {
+        width: 100%;
+        height: 21.375rem;
+        padding: 2rem;
+    }
+
+    .main-header__nav ul {
+        align-items: center;
+    }
+
+    .hero {
+        grid-template-rows: auto auto;
+    }
+
+    .hero header {
+        padding: 3.5rem 2rem;
+        width: auto;
+    }
+
+    .hero header h1 {
+        font-size: 2.75rem;
+    }
+
+    .hero header p {
+        margin-top: 1.5rem;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .stat {
+        padding: 1.5rem;
+    }
+
+    .stat:nth-child(3),
+    .stat:nth-child(4) {
+        border-bottom: var(--main-border-style);
+    }
+
+    .main-header,
+    footer {
+        padding: 1.5rem;
+    }
+
+    footer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    :root {
+        --animation-speed: 0s;
+    }
+}
