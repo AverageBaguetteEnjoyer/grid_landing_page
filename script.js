@@ -1,5 +1,6 @@
 const overlay = document.querySelector("#overlay");
 const hamburgerMenuBtn = document.querySelector("#hamburgerMenuBtn");
+const navMenu = document.querySelector("#menu");
 
 const hasHamburgerBtnExpandedAttribute = () => hamburgerMenuBtn.getAttribute("aria-expanded") === "true";
 
@@ -26,6 +27,12 @@ hamburgerMenuBtn.addEventListener("click", () => {
 overlay.addEventListener("click", () => {
     if (hasHamburgerBtnExpandedAttribute()) {
         closeNavMenu();
+    }
+});
+
+navMenu.addEventListener("transitionend", (e) => {
+    if (hasHamburgerBtnExpandedAttribute() && e.propertyName == "transform" && e.target === navMenu) {
+        navMenu.querySelector("a").focus({focusVisible: true});
     }
 });
 
