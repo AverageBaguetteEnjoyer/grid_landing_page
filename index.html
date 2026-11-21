@@ -15,7 +15,7 @@
     <div class="wrapper">
         <header class="main-header">
             <div class="main-header__logo">&#11044; Bridge Collective</div>
-            <button class="main-header__hamburger" type="button" aria-controls="menu" aria-expanded="false" aria-label="Open menu">
+            <button class="main-header__hamburger" id="hamburgerMenuBtn" type="button" aria-controls="menu" aria-expanded="false" aria-label="Open menu">
                 <svg class="icon__hamburger" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M4 8h16M4 16h16"/>
                 </svg>
@@ -23,7 +23,7 @@
                     <path d="M18 6 6 18M6 6l12 12"/>
                 </svg>
             </button>
-            <nav id="menu" class="main-header__nav" hidden>
+            <nav id="menu" class="main-header__nav">
                 <ul>
                     <li><a href="#">About</a></li>
                     <li><a href="#">Our work</a></li>
@@ -95,6 +95,7 @@
             <span>&copy; 2026 Bridge Collective</span>
             <span>Registered charity 12345678</span>
         </footer>
+        <div class="overlay" id="overlay"></div>
     </div>
     <script src="./script.js"></script>
 </body>
