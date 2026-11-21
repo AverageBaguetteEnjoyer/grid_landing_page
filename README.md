@@ -18,8 +18,8 @@ Desktop view (1920px wide)
 
 ## Links
 
-- Solution URL: 
-- Live Site URL: 
+- Solution URL: https://www.frontendmentor.io/solutions/grid-landing-page-KIwasVWaEl
+- Live Site URL: https://grid-landing-page-abe.netlify.app
 
 ## Continued development
 
